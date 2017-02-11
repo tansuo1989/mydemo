@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:counter"
         mc:Ignorable="d"
-        Title="计算器" Height="370" Width="250">
-    <Grid HorizontalAlignment="Left" Width="188.484" Height="340">
+        Title="计算器" Height="500" Width="300" ResizeMode="NoResize">
+    <Grid HorizontalAlignment="Left" Width="290" Margin="0,10,0,-18.667" RenderTransformOrigin="-0.428,0.806">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Click="one" Content="1" Margin="20.121,72.437,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="20"/>
-        <Button x:Name="button_Copy" Click="two" Content="2" Margin="64.207,72.437,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="20"/>
-        <Button x:Name="button_Copy2"  Click="three" Content="3" Margin="0,72.437,61.864,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" RenderTransformOrigin="2.691,0.512" Height="20"/>
-        <Button x:Name="button_Copy3" Click="add"  Content="+" Margin="0,72.437,19.804,0" VerticalAlignment="Top" RenderTransformOrigin="2.691,0.512" Height="20" HorizontalAlignment="Right" Width="20.218"/>
-        <Button x:Name="button_Copy4"  Click="four" Content="4" Margin="20.121,111.326,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="20"/>
-        <Button x:Name="button_Copy5" Click="jian"  Content="-" Margin="0,111.326,19.804,0" VerticalAlignment="Top" RenderTransformOrigin="2.691,0.512" Height="20" HorizontalAlignment="Right" Width="20.218"/>
-        <Button x:Name="button_Copy6"  Click="five" Content="5" Margin="64.207,111.326,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="20" Height="20"/>
-        <Button x:Name="button_Copy7"  Click="six" Content="6" Margin="0,111.326,61.864,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" RenderTransformOrigin="2.691,0.512" Height="20"/>
-        <Button x:Name="button_Copy8"  Click="seven" Content="7" Margin="20.121,151.692,0,147.308" HorizontalAlignment="Left" Width="20" Height="20" VerticalAlignment="Top"/>
-        <Button x:Name="button_Copy9"  Click="eight" Content="8" Margin="64.207,151.692,0,147.308" HorizontalAlignment="Left" Width="20" Height="20" VerticalAlignment="Top"/>
-        <Button x:Name="button_Copy11"  Click="nine" Content="9" Margin="0,151.692,61.864,147.308" HorizontalAlignment="Right" Width="20" RenderTransformOrigin="2.691,0.512" Height="20" VerticalAlignment="Top"/>
-        <Button x:Name="button_Copy12" Click="cheng"  Content="X" Margin="0,151.692,19.804,147.308" RenderTransformOrigin="2.691,0.512" HorizontalAlignment="Right" Width="20.218" Height="20" VerticalAlignment="Top"/>
-        <Button x:Name="button_Copy13" Click="clear" Content="还原" Margin="14.788,0,0,134.481" HorizontalAlignment="Left" Width="31.322" Height="20" RenderTransformOrigin="0.251,0.468" VerticalAlignment="Bottom"/>
-        <Button x:Name="button_Copy14" Click="chu"  Content="/" Margin="0,0,19.804,134.481" VerticalAlignment="Bottom" RenderTransformOrigin="2.691,0.512" Height="20" HorizontalAlignment="Right" Width="20.218"/>
-        <Button x:Name="button_Copy15"  Click="zero" Content="0" Margin="64.207,0,0,134.481" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="20" Height="20"/>
-        <Button x:Name="button_Copy16" Click="getRe" Content="确定" Margin="0,0,56.034,134.481" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="30.83" RenderTransformOrigin="2.691,0.512" Height="20"/>
-        <TextBlock x:Name="textBlock" Margin="20.121,28.519,19.804,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="24.327"/>
+        <Button x:Name="button" Click="one" Content="1" Margin="20.121,72.437,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="50" Padding="-1,1,1,1" FontSize="24"/>
+        <Button x:Name="button_Copy" Click="two" Content="2" Margin="89.207,72.437,0,0" VerticalAlignment="Top" Height="50" FontSize="24" HorizontalAlignment="Left" Width="50"/>
+        <Button x:Name="button_Copy2"  Click="three" Content="3" Margin="0,72.437,86.864,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" RenderTransformOrigin="2.691,0.512" Height="50" FontSize="24"/>
+        <Button x:Name="button_Copy3" Click="add"  Content="+" Margin="0,72.437,19.804,0" VerticalAlignment="Top" RenderTransformOrigin="2.691,0.512" Height="50" HorizontalAlignment="Right" Width="50" FontSize="24"/>
+        <Button x:Name="button_Copy4"  Click="four" Content="4" Margin="20.121,142.125,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="50" FontSize="24"/>
+        <Button x:Name="button_Copy5" Click="jian"  Content="-" Margin="0,142.125,19.804,0" RenderTransformOrigin="2.691,0.512" HorizontalAlignment="Right" Width="50" FontSize="24" Height="50" VerticalAlignment="Top"/>
+        <Button x:Name="button_Copy6"  Click="five" Content="5" Margin="89.207,142.125,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="50" FontSize="24" d:LayoutOverrides="HorizontalAlignment"/>
+        <Button x:Name="button_Copy7"  Click="six" Content="6" Margin="0,142.125,86.864,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="50" RenderTransformOrigin="2.691,0.512" Height="50" FontSize="24"/>
+        <Button x:Name="button_Copy8"  Click="seven" Content="7" Margin="20.121,225.025,0,185.975" HorizontalAlignment="Left" Width="50" Height="50" FontSize="24"/>
+        <Button x:Name="button_Copy9"  Click="eight" Content="8" Margin="89.207,225.025,0,185.976" HorizontalAlignment="Left" Width="50" Height="50" d:LayoutOverrides="HorizontalAlignment" FontSize="24"/>
+        <Button x:Name="button_Copy11"  Click="nine" Content="9" Margin="0,225.025,86.864,181.976" HorizontalAlignment="Right" Width="50" RenderTransformOrigin="2.691,0.512" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50"/>
+        <Button x:Name="button_Copy12" Click="cheng"  Content="X" Margin="0,225.025,19.804,185.975" RenderTransformOrigin="2.691,0.512" HorizontalAlignment="Right" Width="50" Height="50" FontSize="24"/>
+        <Button x:Name="button_Copy13" Click="clear" Content="还原" Margin="20.121,0,0,118.614" HorizontalAlignment="Left" Width="60" Height="50" RenderTransformOrigin="0.251,0.468" VerticalAlignment="Bottom" FontSize="24"/>
+        <Button x:Name="button_Copy14" Click="chu"  Content="/" Margin="0,0,19.804,118.614" VerticalAlignment="Bottom" RenderTransformOrigin="2.691,0.512" Height="50" HorizontalAlignment="Right" Width="50" FontSize="24"/>
+        <Button x:Name="button_Copy15"  Click="zero" Content="0" Margin="89.207,0,0,118.614" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50" TabIndex="2147483641" FontSize="24"/>
+        <Button x:Name="button_Copy16" Click="getRe" Content="确定" Margin="0,0,76.864,118.614" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="60" RenderTransformOrigin="2.691,0.512" Height="50" FontSize="24"/>
+        <TextBlock x:Name="textBlock" Margin="20.121,24.519,19.804,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28.327" FontSize="16" LineHeight="24" Background="#FFF7EEEE"><Run Background="#FF80C9AA" Text="0"/></TextBlock>
     </Grid>
 </Window>
