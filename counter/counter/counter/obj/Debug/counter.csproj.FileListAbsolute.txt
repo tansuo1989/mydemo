@@ -1,0 +1,14 @@
+C:\cs\counter\counter\counter\bin\Debug\counter.exe.config
+C:\cs\counter\counter\counter\bin\Debug\counter.exe
+C:\cs\counter\counter\counter\bin\Debug\counter.pdb
+C:\cs\counter\counter\counter\obj\Debug\counter.csprojResolveAssemblyReference.cache
+C:\cs\counter\counter\counter\obj\Debug\MainWindow.g.cs
+C:\cs\counter\counter\counter\obj\Debug\App.g.cs
+C:\cs\counter\counter\counter\obj\Debug\counter_MarkupCompile.cache
+C:\cs\counter\counter\counter\obj\Debug\counter_MarkupCompile.lref
+C:\cs\counter\counter\counter\obj\Debug\MainWindow.baml
+C:\cs\counter\counter\counter\obj\Debug\counter.g.resources
+C:\cs\counter\counter\counter\obj\Debug\counter.Properties.Resources.resources
+C:\cs\counter\counter\counter\obj\Debug\counter.csproj.GenerateResource.Cache
+C:\cs\counter\counter\counter\obj\Debug\counter.exe
+C:\cs\counter\counter\counter\obj\Debug\counter.pdb
