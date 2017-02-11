@@ -20,7 +20,7 @@ namespace counter
     /// </summary>
     public partial class MainWindow : Window
     {
-        public int re;
+        public double re;
         public string s,a,b,show;
 
         public MainWindow()
@@ -67,12 +67,13 @@ namespace counter
                     this.re = int.Parse(this.a) * int.Parse(this.b);
                     break;
                 default:
-                    this.re = int.Parse(this.a) / int.Parse(this.b);
+                    this.re = Convert.ToDouble(this.a) / Convert.ToDouble(this.b);
                     break;
             }
             
-            this.show = this.a + this.s + this.b + "=" + this.re;
+            this.show = this.a + this.s + this.b + "=" + this.re.ToString();
             textBlock.Text = this.show;
+           // MessageBox.Show(this.re.ToString());
 
         }
         //还原
