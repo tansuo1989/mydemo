@@ -45,7 +45,7 @@ namespace counter
         //四则运算
         public void setType(string t)
         {
-            if (this.b == null)
+            if (this.a!=null&&this.b == null)
             {
                 this.s = t;
                 textBlock.Text = this.a.ToString() + this.s;
@@ -55,6 +55,7 @@ namespace counter
         //计算结果
         private void getRe(object sender, RoutedEventArgs e)
         {
+            if (this.a == null || this.b == null || this.s == null) { return; }
             switch (this.s)
             {
                 case "+":

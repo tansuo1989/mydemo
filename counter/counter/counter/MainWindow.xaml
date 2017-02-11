@@ -26,6 +26,6 @@
         <Button x:Name="button_Copy14" Click="chu"  Content="/" Margin="0,0,19.804,118.614" VerticalAlignment="Bottom" RenderTransformOrigin="2.691,0.512" Height="50" HorizontalAlignment="Right" Width="50" FontSize="24"/>
         <Button x:Name="button_Copy15"  Click="zero" Content="0" Margin="89.207,0,0,118.614" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50" TabIndex="2147483641" FontSize="24"/>
         <Button x:Name="button_Copy16" Click="getRe" Content="=" Margin="0,0,86.864,118.614" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="50" RenderTransformOrigin="2.691,0.512" Height="50" FontSize="24"/>
-        <TextBlock x:Name="textBlock" Margin="20.121,24.519,19.804,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28.327" FontSize="16" LineHeight="24" Background="#FFF7EEEE"><Run Background="#FF80C9AA" Text="0"/></TextBlock>
+        <TextBlock x:Name="textBlock" Margin="20.121,10,19.804,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="42.846" FontSize="16" LineHeight="24" Background="#FFF7EEEE"><Run Background="#FF80C9AA" Text="0"/></TextBlock>
     </Grid>
 </Window>
