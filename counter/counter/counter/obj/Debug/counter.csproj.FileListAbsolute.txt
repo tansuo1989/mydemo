@@ -12,3 +12,17 @@ C:\cs\counter\counter\counter\obj\Debug\counter.Properties.Resources.resources
 C:\cs\counter\counter\counter\obj\Debug\counter.csproj.GenerateResource.Cache
 C:\cs\counter\counter\counter\obj\Debug\counter.exe
 C:\cs\counter\counter\counter\obj\Debug\counter.pdb
+E:\2016\WWW\git\mydemo\counter\counter\counter\bin\Debug\counter.exe.config
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter.exe
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter.pdb
+E:\2016\WWW\git\mydemo\counter\counter\counter\bin\Debug\counter.exe
+E:\2016\WWW\git\mydemo\counter\counter\counter\bin\Debug\counter.pdb
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter.csprojResolveAssemblyReference.cache
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\MainWindow.g.cs
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\App.g.cs
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter_MarkupCompile.cache
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter_MarkupCompile.lref
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\MainWindow.baml
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter.g.resources
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter.Properties.Resources.resources
+E:\2016\WWW\git\mydemo\counter\counter\counter\obj\Debug\counter.csproj.GenerateResource.Cache
