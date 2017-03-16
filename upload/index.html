@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="row">
+<input type="file" class="file"/>
+<p>
+	<progress id="pro" value="0"></progress>
+</p>
+<p><input type="button" class="sub" value="确定"></p>	
+</div>	
+</body>
+</html>
+<script src="./jquery.js"></script>
+<script>
+//发送的文件大于123M就无法完成，原因不明
+var url="./upload.php";
+var file="";
+var perlen=1024*1024*4;//1M
+var total=1;
+var num=0;
+var start=0;
+var status=0;
+var fd=new FormData();
+
+
+$(".file").change(function(){
+	file=$(this).get(0).files[0];
+	total=Math.ceil(file.size / perlen);
+	$("#pro").attr("max",total);
+	fd.append('total_blob_num',total);
+    fd.append('file_name',file.name);
+	//console.log(file);
+})
+//截取文件
+function cut(){
+  var tem=file.slice(start,start+perlen);
+  start=start+perlen;
+  return tem;
+}
+
+//发送文件
+function send(){
+ status=1;//正在发送
+ $.ajax({
+ 	url:url,
+ 	data:fd,
+    type: 'POST',
+    contentType: false,
+    processData: false, //这一行必不可少
+    success:function(d){
+    	console.log(d);
+    	status=0;
+    },
+    error:function(d){
+    	console.log(d);
+    },
+    complete:function(d){
+    	$("#pro").attr("value",num);
+    }
+ })
+}
+
+function doo(){
+  console.log(num+1+"/"+total);
+  if(num>=total){clearInterval(t);return;}
+  if(status==1){return;}
+  var blob=cut();
+  num++;
+  fd.append('file',blob);
+  fd.append('blob_num',num);
+  send();
+}
+
+
+$(".sub").click(function(){
+  t=setInterval(doo,300);
+  //doo();
+})
+
+	
+</script>
