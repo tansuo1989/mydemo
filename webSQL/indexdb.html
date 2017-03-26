@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+//文档：https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API/Using_IndexedDB
+window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+// DON'T use "var indexedDB = ..." if you're not in a function.
+// Moreover, you may need references to some window.IDB* objects:
+window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
+// (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)
+if (!window.indexedDB) {
+    window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.")
+}
+
+
+// 我们的客户数据看起来像这样。
+const customerData = [
+  { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
+  { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
+];
+const dbName = "the_name";
+
+var request = indexedDB.open(dbName, 2);
+
+request.onerror = function(event) {
+  // 错误处理程序在这里。
+};
+request.onupgradeneeded = function(event) {
+  var db = event.target.result;
+
+  // 创建一个对象存储空间来持有有关我们客户的信息。
+  // 我们将使用 "ssn" 作为我们的 key path 因为它保证是唯一的。
+  var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+
+  // 创建一个索引来通过 name 搜索客户。
+  // 可能会有重复的，因此我们不能使用 unique 索引。
+  objectStore.createIndex("name", "name", { unique: false });
+
+  // 创建一个索引来通过 email 搜索客户。
+  // 我们希望确保不会有两个客户使用相同的 email 地址，因此我们使用一个 unique 索引。
+  objectStore.createIndex("email", "email", { unique: true });
+
+  // 在新创建的对象存储空间中保存值
+  for (var i in customerData) {
+    objectStore.add(customerData[i]);
+  }
+};
+
+//add
+var transaction = db.transaction(["customers"], "readwrite");
+// 注意: 旧版实验性的实现使用不建议使用的常量 IDBTransaction.READ_WRITE 而不是 "readwrite"。
+// 如果你想支持这样的实现，你只要这样写就可以了： 
+// var transaction = db.transaction(["customers"], IDBTransaction.READ_WRITE);
+
+// 当所有的数据都被增加到数据库时执行一些操作
+transaction.oncomplete = function(event) {
+  alert("All done!");
+};
+
+transaction.onerror = function(event) {
+  // 不要忘记进行错误处理！
+};
+
+var objectStore = transaction.objectStore("customers");
+for (var i in customerData) {
+  var request = objectStore.add(customerData[i]);
+  request.onsuccess = function(event) {
+    // event.target.result == customerData[i].ssn
+  };
+}
+
+//删除
+var request = db.transaction(["customers"], "readwrite")
+                .objectStore("customers")
+                .delete("444-44-4444");
+request.onsuccess = function(event) {
+  // 删除数据成功！
+};
+
+//读取
+db.transaction("customers").objectStore("customers").get("444-44-4444").onsuccess = function(event) {
+  alert("Name for SSN 444-44-4444 is " + event.target.result.name);
+};
+</script>

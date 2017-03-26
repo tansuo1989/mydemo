@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSQL</title>
+</head>
+<body>
+
+<div class="" id="status"></div>	
+</body>
+</html>
+
+<script>
+/* var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+         var msg;	
+         db.transaction(function (tx) {
+            tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
+            //tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');
+                             INSERT INTO LOGS (id,log) VALUES (6,gui)
+            tx.executeSql('INSERT INTO LOGS (id, log) VALUES (4, "www.runoob.com")');
+            console.log(tx);
+         });
+
+db.transaction(function(tx){
+	 tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
+      var len = results.rows.length, i;
+      msg = "<p>查询记录条数: " + len + "</p>";
+      document.querySelector('#status').innerHTML +=  msg;
+	
+      for (i = 0; i < len; i++){
+         console.log(results.rows.item(i).log );
+      }
+	})
+})*/
+</script>
+<script>
+//websql类
+
+
+
+	
+// db=openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+// //db.newtable("test",['id','name','money']);	
+// //insert('LOGS',{id:6,log:"gui"});	
+// db.transaction(function(tx){
+// 	//tx.executeSql('INSERT INTO LOGS (id,log) VALUES(8,"gui")');如果8已经存在，则后面的不再执行，也不报错
+// 	tx.executeSql("insert into logs (id,log) values(13,'gui')");
+// 	//sql语句与mysql中类似，大小写不敏感，()前面的空格可有可无
+// })
+// db.transaction(function(tx){
+// 	tx.executeSql("create table if NO EXISTS gui (id,name)");//加了if no exists也没有用，如果这个表存在，则会出现错误，后面的语句就无法再执行了
+// 	tx.executeSql("insert into gui values(2,'gui')");
+// })
+// //分开到不同的事务中则前面的错误不会导致后面的无法执行
+// db.transaction(function(tx){
+// 	tx.executeSql("insert into gui values(3,'yang')");
+// })
+
+function webSQL(){
+	var db=openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+	this.exec=function(sql){
+		var re=0;
+		db.transaction(function(tx){
+			tx.executeSql(sql,[],function(tx,d){
+				console.log(d);
+				//re=d.insertId;//有时不存在
+			});
+		})
+		return re;
+	}
+	this.query=function(sql){
+		var re=[];
+		db.transaction(function(tx){
+			tx.executeSql(sql,[],function(tx,results){
+				 console.log(results);
+	            var len=results.rows.length;
+				for(var i=0;i<len;i++){
+					re.push(results.rows.item(i));
+				}
+			})
+		})
+		return re;
+	}
+	this.create=function(table,fields){
+		  if(!fields){return false;}	
+		  var f="(";
+		  	for(var i in fields){
+	          f+=""+fields[i]+",";
+		  	}
+		  	f=f.substring(0,f.length-1);
+		  	f+=")";
+		  	var sql='CREATE TABLE IF NOT EXISTS '+table+' '+f;
+		  	console.log(sql);
+
+		  	this.exec(sql);
+		}
+	this.insert=function(table,obj){
+	      var keys="",values="";
+	      for(var i in obj){
+	      	keys+=i+",";
+	      	values+="'"+obj[i]+"',";
+	      }
+	      keys=keys.substring(0,keys.length-1);
+	      values=values.substring(0,values.length-1);
+	      var sql='INSERT INTO '+table+" ("+keys+") VALUES ("+values+")";
+	      this.exec(sql);
+	}
+}
+
+var sql=new webSQL();
+// //console.log(sql.query("select*from gui where id>5"));
+// sql.exec("drop mydb");
+// var re=sql.select("select*from gui");
+// console.log(re);
+// sql.create('book2',["id",'name','age']);
+//sql.exec("CREATE TABLE IF NOT EXISTS book (id,name,age)");
+//exec("insert into gui (name) values('haha')");
+/*var re=select("select * from gui");
+console.log(re);*/
+//exec("insert into logs values(8,'php')");//没有写入成功，为什么？
+// exec("create table test2 (id auto_increment,name)");//返回的insertId是60,这又是为什么？(新建表时，返回的id是在变化的),另外auto_increment是不支持的
+// exec("insert into test2 (name) values('test')");
+//exec("drop table test");
+</script>
