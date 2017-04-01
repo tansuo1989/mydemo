@@ -13,3 +13,5 @@ just demo
 
 4.tp thinkphp5拓展的使用实例，添加了workerman  
 
+5.area_select 中国的省、市、县三级联系下拉选择，完全前端实现
+

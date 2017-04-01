@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class="container" id="app">
+	
+	<select v-model="pro" @change="pro_change()">
+		<option :value="v.id" v-for="v in pros">{{v.name}}</option>
+	</select>
+	省
+	<select v-model="city" @change="city_change()">
+		<option :value="v.id" v-for="v in citys">{{v.name}}</option>
+	</select>
+	市
+	<select v-model="county">
+		<option :value="v.id" v-for="v in countys">{{v.name}}</option>
+	</select>
+	县/区
+</div>
+	
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<script src="area_data.js"></script>
+<script>	
+new Vue({
+	el:"#app",
+	data:{
+		all:area_data,
+		pros:[],
+		pro:"",
+		citys:[],
+		city:"",
+		countys:[],
+		county:""
+	},
+	created:function(){
+      this.default();
+      console.log(this.all);
+	},
+	methods:{
+     default:function(){
+       this.pros=this.next(1);
+       this.pro=this.pros[0]['id'];
+       this.citys=this.next(this.pros[0]['id']);
+       this.city=this.citys[0]['id'];
+       this.countys=this.next(this.citys[0]['id']);
+       this.county=this.countys[0]['id'];
+     },
+     pro_change:function(){
+       console.log(this.pro);
+       this.citys=this.next(this.pro);
+       this.city=this.citys[0]['id'];
+       this.countys=this.next(this.citys[0]['id']);
+       this.county=this.countys[0]['id'];
+     },
+     city_change:function(){
+     	this.countys=this.next(this.city);
+     	this.county=this.countys[0]['id'];
+     },
+     next:function(id){
+     	var re=[];
+     	for(var i in this.all){
+     		if(this.all[i]['pid']==id){
+     			re.push(this.all[i]);
+     		}
+     	}
+     	return re;
+     }
+	}
+})
+
+
+</script>
