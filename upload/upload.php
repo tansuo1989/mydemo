@@ -78,7 +78,7 @@ class Upload{
 }//endclass
 
 
-// echo json_encode($_POST);
+// echo json_encode($_FILES['file']);
 // exit();
 
 $data=array(
@@ -90,3 +90,5 @@ $data=array(
 
 //实例化并获取系统变量传参
 $upload = new Upload($data['tmpname'],$data['num'],$data['total'],$data['filename']);
+
+//是否要使用单例？

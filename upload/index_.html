@@ -42,6 +42,7 @@
 
  var upload = new Upload();
 
+//这个代码有问题，上传不成功的时候，浏览器会卡死
  fileForm.onchange = function(){
   var file=this.files[0];
   //console.log(file);
@@ -105,6 +106,11 @@
    form_data.append('blob_num',blob_num);
    status=1;
    xhr.open('POST','./upload.php',false);
+   xhr.onprogress=function(pe){
+    if(pe.lengthComputable){
+      console.log(pe);//并没有反应
+    }
+   }
    
    xhr.onreadystatechange = function () {
       console.log(blob_num);
