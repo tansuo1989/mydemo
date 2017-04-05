@@ -6693,7 +6693,8 @@ _e(function (E, $) {
             var timeoutId;
             var src;
             var formData = new FormData();
-
+           formData.append("_token",$("#token_laravel").val());
+            E.log("曾还桂");
             // 超时处理
             function timeoutCallback() {
                 if (timeoutId) {
