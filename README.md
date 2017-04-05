@@ -13,5 +13,7 @@ just demo
 
 4.tp thinkphp5拓展的使用实例，添加了workerman  
 
-5.area_select 中国的省、市、县三级联系下拉选择，完全前端实现
+5.area_select 中国的省、市、县三级联系下拉选择，完全前端实现  
+
+6.area 是area_select的改进版，其中的area_data.js的数据作了优化，前端不再需要使用循环来查找下一级了
 
