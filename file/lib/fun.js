@@ -1,8 +1,8 @@
 var fs=require("fs");
-var async=require("async");
+// var async=require("async");
 
 //async的callback未生效，为什么？
-exports.fileinfo=function(ro,files,fn){
+/*exports.fileinfo=function(ro,files,fn){
 	var i=0;
       async.map(files,function(item,callback){
 	      	 fs.stat(ro+item,function(err,re){
@@ -20,7 +20,7 @@ exports.fileinfo=function(ro,files,fn){
       	console.log("re:"+result);
       })
        
-}
+}*/
 
 exports.getFile=function(dir,fn){
   fs.readdir(dir,function(err,file){
