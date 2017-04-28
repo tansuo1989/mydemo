@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.2.6/vue.min.js"></script>
+<title>Node 文件管理系统</title>
+</head>
+<body>
+<div class="container" id="app">
+<div class="well"><h1>当前目录:{{dir}} <small>文件总数：{{count}}</small></h1></div>
+
+<div class="row" style="padding-bottom: 1rem;">
+	<div class="col-md-12">
+		<button class="btn btn-info" @click="test('C:/')">C盘</button>
+		<button class="btn btn-info" @click="test('D:/')">D盘</button>
+		<button class="btn btn-info" @click="test('E:/')">E盘</button>
+		<button class="btn btn-success" @click="back()">返回</button>
+		<button class="btn btn-info" @click="haha()">测试</button>	
+	</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+  <table class="table">
+  	<tr v-for="v in list">
+  		<td>{{v.name}}</td>
+  		<td>{{(v.info.size/1024/1024).toFixed(4)}}MB</td>
+  		<td>{{v.info.mtime}}</td>
+  		<td><button class="btn btn-default" v-show="v.isdir" @click="open(v.name)">打开</button></td>
+  	</tr>
+  </table>
+  </div>	
+</div>	
+</div>
+</body>
+</html>
+
+<script>
+
+new Vue({
+	el:"#app",
+	data:{
+      list:[],
+      count:0,
+      all:{},
+      pdir:"/",
+      dir:"",
+	},
+	created:function(){
+		this.getDir("D:/");
+	},
+	methods:{
+	  haha:function(){
+      var data={name:"hiiiii"};
+      $.get("./index",data,function(d){
+      	console.log(d);
+      })
+	  },
+	  back:function(){
+	  	var tem=this.pdir.split("/");
+	  	tem.pop();
+        this.getDir(this.pdir);
+        this.pdir=tem.join("/");
+	  },	
+	  open:function(dir){
+        this.pdir=this.dir;
+        var dir=this.dir+"/"+dir;
+        this.getDir(dir);
+	  },
+      test:function(dir){
+      	 this.getDir(dir);
+      },
+      getDir:function(dir){
+      	var data={
+      		name:dir
+      	};
+      	this.dir=dir;
+      	var _this=this;
+      	if(!dir){return false;}
+      	 $.get("./haha",data,function(d){
+      	 	//console.log(d);
+      	 	//var dir=d.split(",");
+      	 	var dir=JSON.parse(d);
+      	 	console.log(dir[0]);
+
+      	 	_this.list=dir;	
+      	 	_this.count=dir.length;	  	
+		  })
+      }
+	}
+})	
+</script>
