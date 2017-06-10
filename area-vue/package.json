@@ -1,0 +1,36 @@
+{
+  "name": "dyjk_mobile",
+  "version": "1.0.0",
+  "description": "地区选择器",
+  "author": "huangui9@qq.com",
+  "private": true,
+  "scripts": {
+    "vue-watch":"webpack --watch"
+  },
+  "dependencies": {
+    "vue": "^2.2.6",
+    "vue-router": "^2.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "css-loader": "^0.28.0",
+    "file-loader": "^0.11.1",
+    "html-webpack-plugin": "^2.28.0",
+    "vue-loader": "^11.3.4",
+    "vue-style-loader": "^2.0.5",
+    "vue-template-compiler": "^2.2.6",
+    "webpack": "^2.3.3",
+    "webpack-dev-server":"*"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
