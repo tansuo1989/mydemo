@@ -1,9 +1,9 @@
 {
-  "name": "dyjk_mobile",
+  "name": "vue-myarea",
   "version": "1.0.0",
   "description": "地区选择器",
   "author": "huangui9@qq.com",
-  "private": true,
+  "main":"./area.vue",
   "scripts": {
     "vue-watch":"webpack --watch"
   },
