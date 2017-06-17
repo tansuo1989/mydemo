@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp测试</title>
+</head>
+<body>
+<div>
+	<h1>请打开console来查看</h1>
+</div>	
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+//手机号码是随便写的
+//1.使用jQuery.js的方法
+//jQuery.js的回调函数：jQuery3210289778147409252_1497666511674&_=1497666511675
+// $.ajaxSetup({
+//   dataType:"jsonp",
+// });
+// var url="https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel="+15832659586;
+// $.get(url,function(d){
+// 	console.log(d);
+// })	
+
+//2.原生方法去实现
+function jsonp(url,fn){
+	var haha=url.match(/\?/)?"&":"?";
+	var u=url+haha+"callback=jsonpcallbackqwojfowpqfjslfi";
+	var s=document.createElement("script");
+	s.src=u;
+	var head=document.getElementsByTagName("head");
+	head[0].appendChild(s);	
+	window.jsonpcallbackqwojfowpqfjslfi=function(d){
+        fn(d);
+	}
+}
+
+//demo:
+var url="https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=";
+
+jsonp(url+15623659856,function(d){
+	console.log(d);
+})
+
+</script>
+
