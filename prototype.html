@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype的使用</title>
+</head>
+<body>
+	<h1>prototype的使用,请打开console</h1>
+</body>
+</html>
+
+<script>
+
+//1.通过{}创建一个对象
+var a={
+	name:"a",
+    said:function(){
+    	console.log("i am a!");
+    }
+};
+console.log(a);
+
+
+//2.这样添加是不行的，需要在类（构造函数）上添加prototype才行
+// a.prototype.haha=function(){
+// 	console.log("I am haha");
+// }
+// console.log(a);
+
+//3.内置的对象比较特殊，可以直接添加prototype
+Object.prototype.haha=function(){
+	console.log("I am haha");
+}
+console.log(a);
+a.haha();
+
+//4.创建其它的对象一试
+var b={
+	name:b
+}
+b.haha();
+///
+var c=new Object();
+c.haha();
+
+//问题来了，这样，所以通过{}或者new Object()创建的对象都有haha()了!...请往下看
+
+//5.通过构造函数来创建对象
+function obj(){
+	this.name="class";
+	this.hh=function(str){
+		console.log(str?str:"hh");
+	}
+}
+/////插播一点东西
+// obj.doo=function(){
+// 	console.log("doo");
+// } 
+//console.log(obj);//并没有doo
+var c=new obj();
+console.log(c);//也没有doo
+
+//这种方法添加是不行的，但并没有报错！如果你百度到这文章：http://www.cnblogs.com/yjf512/archive/2011/06/03/2071914.html
+//要知道这个地方是错的:
+//类方法
+// People.Run=function(){
+//   alert("I can run");
+// }
+
+
+
+obj.prototype.hi=function(){
+	console.log("hi");
+}
+console.log(c);
+c.hi();
+c.haha();//完了，通过构造函数创建的对象，也受Object.prototype....定义的影响
+
+//总结：prototype还是用在自定义的构造函数上好，不要去定义原生对象的prototype
+
+
+
+
+////************据说，prototype 是用来继承的：
+console.log("************************************");
+// var d="";
+// d.prototype=c;//这样创建是不行的，因为d不是构造函数，不能使用prototype
+
+//这样：
+// function d(){
+//   //this.name="d";
+// };
+//或者这样：
+var d=function(){};
+//d.prototype=c;//或者
+d.prototype=new obj();//这样，构造函数（类）d 就继承了obj对象，你要的继承就达到目的了!
+
+
+var dd=new d();
+console.log(dd.name);
+dd.hi();
+dd.hh();
+dd.haha();
+
+	
+</script>
