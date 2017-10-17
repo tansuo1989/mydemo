@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>topN算法</title>
+</head>
+<body>
+	<p>原数组：<span class="old"></span></p>
+	<p>长度：<span class="arrlen"></span></p>
+	<p>前 <span class="n"></span> 个</p>
+	<p class="re"></p>
+	<p class="re2"></p>
+	<p class="re3"></p>		
+</body>
+</html>
+
+<script>
+function rand(min,max){
+	return Math.floor(Math.random()*(max-min))+min;
+}
+function randLen(min,max,len){
+	var re=[];
+	for(var i=0;i<len;i++){
+		re.push(rand(min,max));
+	}
+	return re;
+}
+function $(el){
+	return document.querySelector(el);
+}
+function copy(arr,n){
+	var re=[];
+	var len=n?n:arr.length;
+	for(var i=0;i<len;i++){
+		re.push(arr[i])
+	}
+	return re;
+}
+
+var old=randLen(10,100000,10000);
+$('.old').innerHTML=JSON.stringify(old);
+var n=50;
+$(".n").innerHTML=n;
+$(".arrlen").innerHTML=old.length;
+var re="";
+
+//这个函数代码很简单，但sort排序当数组长度较长的时候效率是比较低的
+function myTop(arr,n){
+	var newarr=copy(arr);
+	newarr.sort(function(a,b){
+		return b-a;
+	})
+    return copy(newarr,n);
+}
+
+console.time("a")
+var re=myTop(old,n);
+$(".re").innerHTML=JSON.stringify(re);
+console.timeEnd("a")
+
+//替换数组中的最小值
+function replaceMin(arr,v){
+	var index=0;
+	var min=arr[0];
+	var len=arr.length;
+	for(var i=1;i<len;i++){
+      if(arr[i]<min){index=i;min=arr[i];}
+	}
+	if(v>min){
+		arr.splice(index,1,v);
+	}
+}	
+//
+function yourTop(arr,n){
+	var newarr=copy(arr,n);
+    var len=arr.length;
+    for(var i=0;i<len;i++){
+        replaceMin(newarr,arr[i]);//n越大，每次调用replaceMin就越慢
+    }
+    return newarr.sort(function(a,b){
+    	return b-a;
+    })
+}
+
+console.time("b");
+var re2=yourTop(old,n);
+$(".re2").innerHTML=JSON.stringify(re2);
+console.timeEnd("b");
+
+//这两种算法的比较是：
+//1.数组元素较多，n较小时，用yourTop()
+//2.数组元素较少，n较大时，用myTop()
+
+
+
+//herTop()的算法其实与yourTop()差不多，只不过写到同一个函数中了，减少了函数的调用，略优化一些
+function herTop(arr,n){
+	var tmp=copy(arr,n);
+	var len=arr.length;
+	for(var i=n;i<len;i++){
+		for(var j=0;j<n;j++){
+			if(arr[i]>tmp[j]){
+				tmp[j]=arr[i];
+			}
+		}
+	}
+	return tmp.sort(function(a,b){
+		return b-a;
+	})
+}
+console.time("c");
+$(".re3").innerHTML=JSON.stringify(herTop(old,n));
+console.timeEnd("c")
+</script>
