@@ -18,7 +18,9 @@
       --web.xml (这个文件相当重要，相当于路由配置，具体格式风文件)
 
   当然上面的结构还可以更简单一些：只要WEB-INF/classes/Hello.class和WEB-INF/web.xml 两个文件就可以。
+
  4. 放好代码好，双击 tomcat/bin/startup.bat 文件运行 tomcat
+ 
  5. 在浏览器中打开：localhost:8080/demo/Hello 就应该可以看到 Hello.java 中实现的东西了。
 
        
