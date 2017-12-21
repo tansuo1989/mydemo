@@ -3,6 +3,8 @@
 //代码来自网络
 //来源：https://www.cnblogs.com/zsl123/p/5980009.html
 
+set_time_limit(0);
+
 if(isset($_GET['dir'])){
     $basedir=$_GET['dir'];
 }else{
