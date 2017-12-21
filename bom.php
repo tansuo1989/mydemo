@@ -1,6 +1,7 @@
 <?php
 /*检测并清除BOM*/
 //代码来自网络
+//来源：https://www.cnblogs.com/zsl123/p/5980009.html
 
 if(isset($_GET['dir'])){
     $basedir=$_GET['dir'];
