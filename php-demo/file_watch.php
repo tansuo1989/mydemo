@@ -2,6 +2,8 @@
 
 class FileWatch{
     
+    protected $all=array();
+
     public function __construct($dir){
       $this->watch($dir); 
     }
@@ -11,10 +13,9 @@ class FileWatch{
 
 
     protected function all_file($dir){
-        static $all=array();
         if(is_file($dir)){
-            $all[$dir]=md5_file($dir);
-            return $all;
+            $this->all[$dir]=md5_file($dir);
+            return $this->all;
         }
         if(is_dir($dir)){
             $open=opendir($dir);
@@ -22,7 +23,7 @@ class FileWatch{
                 if($file!="."&&$file!=".."){
                     $f=$dir."/".$file;
                     if(is_file($f)){
-                        $all[$f]=md5_file($f);
+                        $this->all[$f]=md5_file($f);
                     }elseif(is_dir($f)){
                         $this->all_file($f);
                     }
@@ -30,29 +31,28 @@ class FileWatch{
                 }
             }
         }
-        return $all;
+        return $this->all;
     }
 
     public function watch($dir){
+        $this->all=array();
         $old=$this->all_file($dir);
         while(true){
             sleep(2);
+            $this->all=array();
             $new=$this->all_file($dir);
-            $ischange=false;
-            foreach($new as $k=>$v){
-                if($v!=$old[$k]){
-                    $this->fun($k);
-                    $ischange=true;
-                }
-            }
-            if($ischange){
+
+            $re=array_diff($new,$old);
+            $del=array_diff_key($old,$new);
+            $re=array_merge($re,$del);
+            if($re){
+                $this->all=array();
                 $old=$this->all_file($dir);
+                $file=array_keys($re);
+                $this->fun($file[0]);
             }
         }
     }
-
-
-
 
 }//endclass
 
