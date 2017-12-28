@@ -6,7 +6,7 @@ var color=['a','b','c','d','e'];
 var num=10;
 
 function rand(min,max){
-    return Math.round(Math.random()*(max-min)+min);
+    return Math.round(Math.random()*(max-min+1)+min-0.5);
 }
 
 function get_ball(){
@@ -33,10 +33,31 @@ function arr_in_arr(arr1,arr2){
     return true;
 }
 
-var total=10000000;
-var right=0;
-for(var i=0;i<total;i++){
-    if(arr_in_arr(color,get_ball())){right++;}
+function chance(total){
+    var right=0;
+    for(var i=0;i<total;i++){
+        if(arr_in_arr(color,get_ball())){right++;}
+    }
+    console.log("right:"+right/total)
 }
-console.log("right:"+right/total)
-//约 41.5%
+chance(10000000);
+//约 52.2%
+
+
+//测试随机函数
+function test(len){
+    var count={
+        0:0,
+        1:0,
+        2:0,
+        3:0,
+        4:0,
+    }
+    for(var i=0;i<len;i++){
+        var tem=rand(0,4);
+        count[tem]++;
+    }
+    console.log(count);
+}
+
+//test(100000000);
