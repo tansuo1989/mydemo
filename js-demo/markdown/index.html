@@ -4,25 +4,34 @@
     <title>markdown-js</title>
     <style>
      #from,#show{width:40%;min-height:500px;float:left;padding:1rem;}
+     .center{text-align: center;}
     </style>
     </head>
   <body>
+    <div class="row">
+        <h2 class="center">markdown-js的demo <small>左侧输入，右侧展示</small></h2>
+    </div>
     <textarea id="from">Type **Markdown** here.</textarea>
     <div id="show"> </div>
-    <script src="lib/markdown.js"></script>
-    <script>
-    function $(el){
-      return document.querySelector(el);
-    }
 
-    $("#from").oninput=function(){
-        var input=$("#from").value;
-        //console.log(input);
-        var str=markdown.toHTML(input);
-        //console.log(str);
-       $("#show").innerHTML=str; 
-    }
-
-    </script>
+    <div class="row">
+        <a href="https://github.com/evilstreak/markdown-js/releases" target="_blank">markdown-js 下载地址</a>
+    </div>
   </body>
 </html>
+
+<script src="lib/markdown.js"></script>
+<script>
+function $(el){
+  return document.querySelector(el);
+}
+
+$("#from").oninput=function(){
+    var input=$("#from").value;
+    //console.log(input);
+    var str=markdown.toHTML(input);
+    //console.log(str);
+   $("#show").innerHTML=str; 
+}
+
+</script>
