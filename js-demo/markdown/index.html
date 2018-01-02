@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>markdown-js</title>
+    <style>
+     #from,#show{width:40%;min-height:500px;float:left;padding:1rem;}
+    </style>
+    </head>
+  <body>
+    <textarea id="from">Type **Markdown** here.</textarea>
+    <div id="show"> </div>
+    <script src="lib/markdown.js"></script>
+    <script>
+    function $(el){
+      return document.querySelector(el);
+    }
+
+    $("#from").oninput=function(){
+        var input=$("#from").value;
+        //console.log(input);
+        var str=markdown.toHTML(input);
+        //console.log(str);
+       $("#show").innerHTML=str; 
+    }
+
+    </script>
+  </body>
+</html>
