@@ -1,0 +1,14 @@
+{
+ 
+        "compilerOptions": {
+        	"outDir":"./js",
+            //"out": "out.js",
+            "allowJs":true,
+            "sourceMap": true,
+            "target": "es5"
+        },
+        "files": [
+            "index.ts"
+        ],
+        "include":["./"]
+}
