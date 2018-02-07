@@ -1,4 +1,4 @@
-## phthon 学习笔记
+## python 学习笔记
 
 ### django 框架学习纪录
 
