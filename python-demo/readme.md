@@ -2,6 +2,23 @@
 
 ### django 框架学习纪录
 
+### 开始使用：
+1. 创建应用：
+```
+django-admin.py startproject HelloWorld
+```
+
+2. 启动服务：
+```
+python manage.py runserver 0.0.0.0:8000
+# 或者省略ip与端口，默认即是8000端口
+python manage.py runserver
+
+```
+
+
+
+
 ### 使用数据库
 1. 安装 mysql 拓展
 ```` 

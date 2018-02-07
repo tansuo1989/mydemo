@@ -48,7 +48,8 @@ urlpatterns = [
     url(r'^user/',include(other)),
     url(r'^cc/',views.cc),
     url(r'^index/',index.index),
-    url(r'^gui/',gui.index)
+    url(r'^gui/',gui.index),
+    url(r'^controller/',include('controller.urls')), #使用子路由
 ]
 
 
