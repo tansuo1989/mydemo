@@ -108,6 +108,6 @@ log(arr4);
 
 //9.类型断言
 let str3:any=9494;
-// log((<string>str3).substr(0,2));//可能通过编译，但运行会报错
+// log((<string>str3).substr(0,2));//可以通过编译，但运行会报错
 
 // log((str3 as string).substr(0,2));//上同，另一种写法
