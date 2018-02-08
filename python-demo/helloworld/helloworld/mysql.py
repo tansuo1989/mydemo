@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from HiModel.models import Test
  
 # 数据库操作
-def testdb(request):
+def insert(request):
     name=request.GET['name'];
     age=request.GET['age']
     test1 = Test(name=name,age=age)

@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^json/',view.json),
     url(r'^res/',view.res),
     url(r'^admin/', admin.site.urls),
-    url(r'^insert/',mysql.testdb),
+    url(r'^insert/',mysql.insert),
     url(r'^find/',mysql.find),
     url(r'^update/',mysql.update),
     url(r'^del/',mysql.delete),
