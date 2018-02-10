@@ -8,7 +8,8 @@ def index(request):
 
 def tem(request):
     template = loader.get_template('gui/index.html') 
-    js={"name":"lily","age":18}
+    # js={"name":"lily","age":18}
+    js=[1,2,3,4]
     # context = RequestContext(request, {
     #     'list': js,
     # })
@@ -28,3 +29,6 @@ def param(request,pid):
 
 def p(request,pid):
     return HttpResponse(pid)    
+
+
+    
