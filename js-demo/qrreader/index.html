@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>qrcode</title>
+</head>
+<body>
+    <h2 class="center">请上假二维码图片，不能解析内容为中文的二维码。</h2>
+<input type="file" class="upload"> 
+<div class="show">
+
+</div>
+<div class="result"></div>
+
+
+</body>
+</html>
+
+<script type="text/javascript" src="qrcodereader.js"></script>
+
+<script>
+function $(el){
+    return document.querySelector(el);
+}   
+
+function decode(d){
+    var reader=new FileReader();
+    reader.readAsDataURL(d.target.files[0]);
+    reader.onload=function(d){
+       // console.log(d);
+        var base64=d.target.result;
+        $(".show").innerHTML="<img src='"+base64+"'/>";
+        qrcode.decode(base64,function(result){
+            console.log(result)
+            $(".result").innerHTML="识别的结果是："+result;
+        })
+    }
+}
+
+$(".upload").onchange=decode;
+
+
+   
+</script>
