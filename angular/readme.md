@@ -30,10 +30,7 @@ ng config <jsonPath> --options
 但 jsonPath 不知是什么？
 
 4. ng serve 报错的问题：
-  可能停在95%，则可以试试：
-
-  1. 把node_modules删除，然后用npm i 安装@angular/cli
-  2. 或使用 yarn 来安装
+  可能停在95%，则可以试试：把node_modules删除，然后用npm i 安装@angular/cli,或使用 yarn 来安装
 
 5. ajax返回值的数据类型怎样定义？
 
