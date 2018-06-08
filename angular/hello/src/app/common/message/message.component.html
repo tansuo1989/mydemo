@@ -1,0 +1,24 @@
+
+<div class="row" *ngIf="msg.message.length>0||msg.msg">
+<div class="col-md-12 bd">
+
+  <div class="col-md-12" *ngIf="msg.message.length">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let v of msg.message">{{v}}</li>
+    </ul>
+  </div>
+  
+  <div class="col-md-12">
+      <div class="well msg" *ngIf="msg.msg">
+          {{msg.msg}}
+      </div>
+  </div>
+  
+  <button class="btn btn-danger fright" (click)="close()">关 闭</button>
+
+</div>
+</div>
+
+
+
+

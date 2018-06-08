@@ -1,0 +1,30 @@
+
+<div class="row">
+  <div class="col-md-12 edit"*ngIf="now">
+         <div class="row">
+           <div class="col-md-4">当前英雄：</div>
+           <div class="col-md-4">{{now.id}}</div>
+           <div class="col-md-4">{{now.name}}</div>
+         </div>
+          
+          <p>
+            <label>修改：
+              <input [(ngModel)]="now.name">
+            </label>
+            <button class="btn btn-info" (click)="edit()">修改</button>
+          </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let v of all" >
+        <a routerLink="/detail/{{v.id}}">{{v.name}}</a>
+        <span class="badge" (click)="del(v)">删除</span>
+        <button class="btn btn-default btn-sm " (click)="myselect(v)">编辑</button>
+      </li>
+    </ul>
+  </div>
+</div>
+

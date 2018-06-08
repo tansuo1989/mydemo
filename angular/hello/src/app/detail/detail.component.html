@@ -1,0 +1,20 @@
+<div class="container" *ngIf="hero">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="center">英雄详情</h3>
+        <button class="btn btn-info" (click)="back()">返 回</button>
+    </div>
+  </div>
+  
+<table class="table">
+
+  <tr>
+    <th>id</th>
+    <th>name</th>
+  </tr>
+  <tr>
+    <td>{{hero.id}}</td>
+    <td>{{hero.name}}</td>
+  </tr>
+</table>
+</div>

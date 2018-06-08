@@ -1,0 +1,8 @@
+
+.row{width:100%;}
+
+.fright{position: absolute;right:0;bottom:0.18rem;}
+
+.bd{border:1px solid #ddd;border-radius: 3px;padding:.5rem;min-height:45px;position: relative;}
+
+.msg{text-align: center;color:red;}

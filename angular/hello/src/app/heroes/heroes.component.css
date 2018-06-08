@@ -1,0 +1,8 @@
+
+li{border:1px solid #eee;}
+
+li.active{color:#ddd;}
+
+.badge{cursor: pointer;}
+
+.edit{margin:1rem 0;}
