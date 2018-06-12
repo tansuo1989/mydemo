@@ -8,6 +8,29 @@
 7. 怎样组件化？
 8. 怎样操作DOM (包括间接与直接操作)
 
+
+# React.js 的基本使用方法：
+1. 使用 React.CreateClass()创建一个 class，即一个组件：
+```javascript
+ var Mydiv=React.createClass({
+     //相当于vue.js中的data 函数
+    getInitialState: function() {
+        return {value: 'Hello Runoob!'};
+    },
+    //渲染视图,模版都写在这个函数里
+    render: function(){
+        return <div></div>;
+    }
+ })
+```
+2. 使用 ReactDOM.render() 把组件渲染到 html 页面中：
+```javascript
+ReactDOM.render(
+  <Mydiv />,
+  document.getElementById('aa')
+);
+```
+
 # 存在的疑问：
 1. 怎样绑定样式(注意在jsx中的html中不能使用class而应该使用className)
 
@@ -22,10 +45,9 @@ list.map(function(item,index){
 ```javascript
 onClick={function(){this.show(item)}.bind(this)}
 ```
+    后面如果不加bind，则找不到this
 
-后面如果不加bind，则找不到this
-
-如果不使用bind,也可以这样写：
+    如果不使用bind,也可以这样写：
 ```javascript
 onClick={()=>this.show(item)}
 
@@ -36,12 +58,13 @@ onClick={()=>{this.show(item)}}
 
 3. props的值修改后，视图中响应的问题：
 
- 数据修改后，但视图没有变化，这里需要使用 this.setState()，如果说state中的数据没有变化，直接这样执行就可以了。
- 不执行的话，视图不会更新。
 
- 其实，不论是props还是state被修改后，只要直接执行this.setSate(); 则视图会更新。
+    数据修改后，但视图没有变化，这里需要使用 this.setState()，如果说state中的数据没有变化，直接这样执行就可以了。
+    不执行的话，视图不会更新。
 
- 数据变更后更新视图的方式： 
+    其实，不论是props还是state被修改后，只要直接执行this.setSate(); 则视图会更新。
+
+    数据变更后更新视图的方式： 
 ```javascript
  1. this.setState();//不论是否传参，都会更新视图
 
@@ -49,7 +72,7 @@ onClick={()=>{this.show(item)}}
 
  3. this.replaceState({});//替换所有的state对象，一般不会使用
 
- 测试后发现无效的方法：
+    测试后发现无效的方法：
  1. this.render();//对state也没有效果，原因不明
  2. this.setProps();//提示不存在这个方法，但网上说es6中才不存在
  3. this.replaceProps({});//同样提示方法不存在 
