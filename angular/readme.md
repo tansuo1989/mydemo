@@ -36,5 +36,14 @@ ng config <jsonPath> --options
 
 6. 定义数据类型是用interface还是class好？ Hero中使用了class 。
 
-7. 
+7. 根模块不需要exports吗？
+  把 AppComponent 放到 exports 中只是为了演示导出的语法，这在本例子中实际上是没必要的。 根模块没有任何理由导出任何东西，因为其它模块永远不需要导入根模块。
+  来自：[这里](https://www.angular.cn/guide/architecture-modules)
+
+  但 main.ts中不是需要使用吗？
+
+8. angular 中的惰性加载是怎么回事？
+9. angular中怎样使用多个NgModule ?
+10. angular 的路由有问题：通过ng build后产生的应用，除了根目录外通过url不能直接访问页面，那么，每个页面生成的url有什么意义？
+11.
 

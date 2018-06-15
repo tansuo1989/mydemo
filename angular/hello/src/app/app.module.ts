@@ -10,6 +10,9 @@ import { AppRoutingModule } from '../app-routing.module';
 import { NavComponent } from './common/nav/nav.component';
 import { MessageComponent } from './common/message/message.component';
 import { HeroAddComponent } from './hero-add/hero-add.component';
+// import { TestComponent } from './common/test/test.component';
+import {CoModule} from "./common/co/co.module";
+// import {MyRouterModule} from "./common/co/router.module";
 
 @NgModule({
   declarations: [
@@ -18,13 +21,16 @@ import { HeroAddComponent } from './hero-add/hero-add.component';
     DetailComponent,
     NavComponent,
     MessageComponent,
-    HeroAddComponent
+    HeroAddComponent,
+    // TestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
+    CoModule
+    // MyRouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
