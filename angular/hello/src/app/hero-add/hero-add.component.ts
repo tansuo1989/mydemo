@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroService } from "../service/hero.service";
 import { MessageService } from "../service/message.service";
+import {Router} from "@angular/router";
+import {ParentComponent} from "../common/parent/parent.component";
+
 
 interface j{
   status:number;
@@ -20,6 +23,7 @@ export class HeroAddComponent implements OnInit {
   constructor(
     private service:HeroService,
     private msg:MessageService,
+    private router:Router,
   ) { }
 
   ngOnInit() {
@@ -34,6 +38,10 @@ export class HeroAddComponent implements OnInit {
       this.msg.show(d.info);
       this.name="";
     })
+  }
+
+  jump(){
+    this.router.navigate(["/hero",{id:99}]);
   }
 
 }

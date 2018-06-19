@@ -12,7 +12,8 @@ import { MessageComponent } from './common/message/message.component';
 import { HeroAddComponent } from './hero-add/hero-add.component';
 // import { TestComponent } from './common/test/test.component';
 import {CoModule} from "./common/co/co.module";
-// import {MyRouterModule} from "./common/co/router.module";
+import {MyRouterModule} from "./common/co/router.module";
+// import { ParentComponent } from "./common/parent/parent.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {CoModule} from "./common/co/co.module";
     NavComponent,
     MessageComponent,
     HeroAddComponent,
+    // ParentComponent
     // TestComponent
   ],
   imports: [

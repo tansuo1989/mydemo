@@ -3,6 +3,7 @@ import { Hero } from "../data/hero";
 // import {list} from "./hero/list";
 import { HeroService} from "../service/hero.service";
 import { MessageService } from "../service/message.service";
+import { ActivatedRoute } from '@angular/router';
 
 interface j{
   status:number,
@@ -21,9 +22,12 @@ export class HeroesComponent implements OnInit {
   constructor(
     private HeroService:HeroService,
     private msg:MessageService,
+    private route:ActivatedRoute,
   ) { }
 
   ngOnInit() {
+    let id=this.route.snapshot.paramMap.get("id");
+    console.log("Id:",id);
     this.getHeroes();
   }
   getHeroes():void{

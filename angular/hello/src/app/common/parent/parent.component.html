@@ -1,0 +1,7 @@
+<p>
+  parent works!
+</p>
+<div class="row">
+  <div class="col-md-12">年龄：{{age}}</div>
+</div>
+<app-child name="I_am_from_parent" [age]="age" (onSelect)="add($event)"></app-child>
