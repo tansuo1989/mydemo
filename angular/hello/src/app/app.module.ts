@@ -13,6 +13,7 @@ import { HeroAddComponent } from './hero-add/hero-add.component';
 // import { TestComponent } from './common/test/test.component';
 import {CoModule} from "./common/co/co.module";
 import {MyRouterModule} from "./common/co/router.module";
+// import { MyfilterPipe } from '../myfilter.pipe';
 // import { ParentComponent } from "./common/parent/parent.component";
 
 @NgModule({
@@ -23,6 +24,7 @@ import {MyRouterModule} from "./common/co/router.module";
     NavComponent,
     MessageComponent,
     HeroAddComponent,
+    // MyfilterPipe,
     // ParentComponent
     // TestComponent
   ],

@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import{ TestComponent } from "../test/test.component";
 import { ParentComponent } from '../parent/parent.component';
 import { ChildComponent } from '../child/child.component';
+import {FormsModule} from "@angular/forms";
+import {MyfilterPipe} from "../../../myfilter.pipe";
 
 var r:Routes=[
   {path:"co/test",component:TestComponent},
@@ -16,12 +18,14 @@ var r:Routes=[
 @NgModule({
   imports: [
     RouterModule.forChild(r),
+    FormsModule,
   ],
   exports:[RouterModule],
   declarations: [
     TestComponent,
     ParentComponent,
     ChildComponent,
+    MyfilterPipe
   ]
 })
 export class MyRouterModule { }

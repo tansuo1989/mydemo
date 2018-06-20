@@ -8,6 +8,7 @@ import { Component, OnInit,Input,EventEmitter,Output} from '@angular/core';
 export class ChildComponent implements OnInit {
   @Input() name:string;
   @Input() age:number;
+  @Input() pname:string;
   @Output() onSelect=new EventEmitter();
 
   constructor() { }
@@ -17,6 +18,9 @@ export class ChildComponent implements OnInit {
 
   add(){
     this.onSelect.emit({age:++this.age});
+  }
+  alert(){
+    alert("I am from child");
   }
 
 }

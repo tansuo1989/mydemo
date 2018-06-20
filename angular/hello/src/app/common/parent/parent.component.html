@@ -2,6 +2,18 @@
   parent works!
 </p>
 <div class="row">
+  <div class="col-md-12">
+        管道测试：输入：2,输出：{{2|myfilter:3}}
+  </div>
   <div class="col-md-12">年龄：{{age}}</div>
+  <div class="col-md-4">子组件的属性：</div>
+  <div class="col-md-4">name:{{child.name}}</div>
+  <div class="col-md-4">age:{{child.age}}</div>
+  <div class="col-md-12">
+    <button class="btn btn-info" (click)="child.alert()">调用子组件的方法</button>
+    <button class="btn btn-success" (click)="test()">测试</button>
+    <input type="text" class="form-control" placeholder="父组件输入" [(ngModel)]="pname">
+    <p>pname:{{pname}}</p>
+  </div>
 </div>
-<app-child name="I_am_from_parent" [age]="age" (onSelect)="add($event)"></app-child>
+<app-child name="I_am_from_parent" [age]="age" [pname]="pname" (onSelect)="add($event)" #child></app-child>

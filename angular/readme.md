@@ -95,5 +95,8 @@ ng g component pagename -m app/src/common/co ## 指定添加到 commn/co 模块 
 
 15. 一个组件可以在多个子模块中同时使用吗？
 
-16. 
+16. 创建 pipe 时不能添加目录？
+```sh
+ng g pipe filter -m app ##成功
+ng g pipe filter/index -m app  ##失败
 
