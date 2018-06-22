@@ -3,7 +3,15 @@
 </p>
 <div class="row">
   <div class="col-md-12">
-        管道测试：输入：2,输出：{{2|myfilter:3}}
+        管道测试：输入：2,输出：{{2|myfilter:3|my:4}}
+  </div>
+  <div class="col-md-12">
+     函数过滤器：输入：2，输出：{{myadd(2)}}
+  </div>
+  <div class="col-md-12">
+    循环函数过滤器：<br/>
+    原始数据：<span class="btn btn-default" *ngFor="let v of mydata">{{v}}</span><br/>
+    过滤后的：<span class="btn btn-default" *ngFor="let v of mydata">{{myadd(v)}}</span>
   </div>
   <div class="col-md-12">年龄：{{age}}</div>
   <div class="col-md-4">子组件的属性：</div>

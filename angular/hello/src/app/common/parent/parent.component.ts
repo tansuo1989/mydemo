@@ -12,6 +12,7 @@ export class ParentComponent implements OnInit {
 
   age:Number=99;
   pname:string="pname";
+  mydata=[1,2,3,4,5];
 
   constructor() { }
 
@@ -24,6 +25,9 @@ export class ParentComponent implements OnInit {
   test(){
     this.cc.alert();
     //console.log(this.cc)
+  }
+  myadd(i){
+    return i+2;
   }
 
 }

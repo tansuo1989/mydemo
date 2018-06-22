@@ -98,5 +98,27 @@ ng g component pagename -m app/src/common/co ## 指定添加到 commn/co 模块 
 16. 创建 pipe 时不能添加目录？
 ```sh
 ng g pipe filter -m app ##成功
-ng g pipe filter/index -m app  ##失败
+ng g pipe filter/index -m app  ##失败，所以要在其它目录创建 pipe ，只能手动添加
+```
+
+17. 一个 pipe 文件只有创建一个管道吗？
+  解答：可以在模版中直接使用函数来达到过滤器的目的
+
+18. 模版中使用 *ngFor 和 *ngIf 使用在对应的 NgMoudule 中引入： CommonMoudle 
+    否则会报错：
+  ```sh
+  Can't bind to 'ngForIn' since it isn't a known native property
+  ``` 
+
+19. ng 几个命令的起始目录：
+* ng g component page //当前目录
+* ng g module module/home // src/app
+* ng g pipe pipe/test // 当当前目录在src/app及以上时，根目录是： src/app 可以添加目录，但不能通过 -m指定模块，命令行只能添加到根模块
+* ng g service service/home // src/app 不能通过 -m 指定模块，也没有自动添加到任何模块
+* ng g directive app/directive/mytest app/home/modue //当前目录
+
+20. 两个项目部的说明：
+* hello 测试各种功能的实现方式
+* hi 结合多模块和路由等，项目结构比较清晰
+
 
