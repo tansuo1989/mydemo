@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>大文件分块上传</title>
+</head>
+<body>
+<div class="row">
+<input type="file" class="file"/>
+<p>
+	<progress id="pro" value="0"></progress>
+</p>
+<p><input type="button" class="sub" value="确定"></p>	
+<div class="row">
+  <img src="" alt="" class="show">
+</div>
+</div>	
+</body>
+</html>
+<script>
+//发送的文件大于123M就无法完成，原因不明
+class upload{
+  constructor(file){
+    this.url="./upload.php";
+    this.perlen=1024*1024;
+    this.num=0;
+    this.file=file;
+    this.filename=file.name;
+    this.fileType=file.type;
+    this.ext=file.name.substring(file.name.lastIndexOf("."));
+    this.total=Math.ceil(this.file.size/this.perlen);
+  }
+  //截取文件
+  cut(){
+    var tem=file.slice(start,start+perlen);
+    start=start+perlen;
+    return tem;
+  }  
+
+  post(url,data,fn){
+    var xhr=new XMLHttpRequest();
+    xhr.open("POST",url,true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState==4 && xhr.status==200){
+        var d=xhr.responseText;
+        try{
+          fn(JSON.parse(d));
+        }catch(e){
+          console.log(e,d)
+        }
+       
+      }
+    }
+    var fd=new FormData();
+    for(var i in data){
+      fd.append(i,data[i]);
+    }
+    xhr.send(fd);
+  }
+  send(){
+     var _this=this;
+     var data={
+       status:"start",
+       filename:this.filename,
+     };
+     this.post(this.url,data,function(d){
+       console.log(d)
+       if(d.status==1){
+         _this.filename=d.info;
+         _this.loading();
+       }
+     })
+  }
+  loading(){
+    var start=0;
+    var _this=this;
+    var timer=setInterval(function(){
+         if(start>=_this.file.size){
+           clearInterval(timer);
+           return false;
+         }
+         var index=start/_this.perlen;
+         var data={
+           filename:_this.filename,
+           file:_this.file.slice(start,start+_this.perlen),
+           status:"loading",
+           index:index,
+         }
+         start=start+_this.perlen;
+         _this.post(_this.url,data,function(d){
+           console.log(d);
+           if(d.status==1){
+             _this.num++;
+             document.querySelector("#pro").setAttribute("value",_this.num/_this.total);
+             if(_this.num>=_this.total){
+               _this.merge();
+             }
+           }else{
+             console.log("err:",d.info);
+           }
+         })
+    },100)
+  }
+
+  merge(){
+    var data={
+      filename:this.filename,
+      status:"merge",
+      ext:this.ext,
+      total:this.total,
+    }
+    var _this=this;
+    this.post(this.url,data,function(d){
+      console.log(d);
+      if(d.status==1){
+        if(_this.fileType.search("image")!=-1){
+           document.querySelector(".show").setAttribute("src",d.info);
+        }else{
+          setTimeout(()=>{alert("上传完成")});
+        }
+      }
+    })
+  }
+
+}
+
+document.querySelector(".sub").onclick=function(){
+	var file=document.querySelector(".file").files[0];
+	var u=new upload(file);
+	u.send();
+}
+
+
+
+
+
+
+	
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ES2015 中使用 class 创建类</title>
+</head>
+<body>
+   内容见控制台 
+</body>
+</html>
+<script>
+//ES2015 中可以直接使用 class 创建类，文档：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes
+
+class upload{
+    //构造函数
+   constructor(f){
+     console.log("f:",f)
+   }
+   get name(){
+       console.log("upload.name");
+   }
+   set name(n){
+    //    this.clname=n;
+    //    console.log(this.clname)
+   }
+   static hi(){
+       console.log("upload.hi")
+   }
+
+   re(){
+       return this;
+   }
+}
+
+
+let u=new upload("file");
+u.name;
+u.name="hi"
+upload.hi();
+console.log(u.re())
+let re=u.re;
+console.log(re())//返回 this,原来指向 window,但在es2015中，返回undefined
+
+class child extends upload{
+    static hi(){
+        console.log("child.hi")
+        super.hi();//用super调用父类
+    }
+
+}
+child.hi();
+
+</script>
