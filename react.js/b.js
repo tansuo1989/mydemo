@@ -27,7 +27,7 @@ var Parent=React.createClass({
         return <div>
                  <h3>name:{this.state.name} |age:{this.state.age}</h3>
                  <h4>parent.name:{this.props.name}</h4>
-                 <p>{this.state.name}'s money:{this.state.money}</p>
+                 <p>{this.state.name}\'s money:{this.state.money}</p>
                  <Child onadd={this.getMoney} name={this.props.name+"/"+this.state.name}/>
                  <Child2 num={this.state.num}/>
               </div>
