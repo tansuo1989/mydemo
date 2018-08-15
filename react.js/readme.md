@@ -125,7 +125,7 @@ var Child=React.createClass({
     getInitialState(){
         return {
             money:0,
-            name:"It is lilei's Child!"
+            name:"It is lilei\'s Child!"
         }
     },
     render(){
@@ -138,7 +138,7 @@ var Child=React.createClass({
 
 
 ReactDOM.render(
-    <Parent name="lilei's parent"/>,
+    <Parent name="lilei\'s parent"/>,
     document.querySelector("#app")
 )
 ```
